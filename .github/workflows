@@ -1,0 +1,31 @@
+name: Contrast Security Scan
+on: [push, pull_request, repository_dispatch]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+      checks: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Contrast Combined Scan
+        uses: andersonshatch/scan-and-sca@main
+        with:
+          # Required inputs
+          apiUrl: ${{ secrets.CONTRAST_API_URL }}
+          apiKey: ${{ secrets.CONTRAST_API_KEY }}
+          apiUserName: ${{ secrets.CONTRAST_USERNAME }}
+          apiServiceKey: ${{ secrets.CONTRAST_SERVICE_KEY }}
+          orgId: ${{ secrets.CONTRAST_ORG_ID }}
+          
+          # Optional: Control which scans to run
+          runSca: true
+          runLocalScan: true
+          
+          # Optional: Common configuration
+          severity: 'HIGH'
+          fail: true
