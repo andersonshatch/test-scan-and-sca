@@ -5,20 +5,23 @@ jobs:
   security-scan:
     uses: andersonshatch/scan-and-sca@reusable-workflow
     with:
-      # Required inputs
-      apiUrl: ${{ secrets.CONTRAST_API_URL }}
-      apiKey: ${{ secrets.CONTRAST_API_KEY }}
-      apiUserName: ${{ secrets.CONTRAST_USERNAME }}
-      apiServiceKey: ${{ secrets.CONTRAST_SERVICE_KEY }}
-      orgId: ${{ secrets.CONTRAST_ORG_ID }}
+      apiUrl: https://eval.contrastsecurity.com
       
       # Optional: Control which scans to run
       runSca: true
       runLocalScan: true
       
-      # Optional: Common configuration
-      severity: 'HIGH'
+      # Optional: Set severity threshold
+      severity: HIGH
       fail: true
+      
+      # Optional: SCA-specific settings
+      outputSummary: true
+      ghasEnabled: true
+      
+      # Optional: Local Scan-specific settings
+      checks: true
+      codeQuality: true
     secrets:
       CONTRAST_API_KEY: ${{ secrets.CONTRAST_API_KEY }}
       CONTRAST_USERNAME: ${{ secrets.CONTRAST_USERNAME }}
