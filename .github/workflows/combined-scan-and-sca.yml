@@ -3,7 +3,7 @@ on: [push, pull_request, repository_dispatch, workflow_dispatch]
 
 jobs:
   security-scan:
-    uses: andersonshatch/scan-and-sca@reusable-workflow
+    uses: andersonshatch/scan-and-sca/.github/workflows/combined-sca-and-local-scan.yml@reusable-workflow
     with:
       apiUrl: https://eval.contrastsecurity.com
       
