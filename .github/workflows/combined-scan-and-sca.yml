@@ -27,3 +27,7 @@ jobs:
       CONTRAST_USERNAME: ${{ secrets.CONTRAST_USERNAME }}
       CONTRAST_SERVICE_KEY: ${{ secrets.CONTRAST_SERVICE_KEY }}
       CONTRAST_ORG_ID: ${{ secrets.CONTRAST_ORG_ID }}
+    permissions:
+      contents: read
+      security-events: write
+      checks: write
