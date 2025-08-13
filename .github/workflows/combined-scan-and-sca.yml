@@ -10,6 +10,8 @@ jobs:
       # Optional: Control which scans to run
       runSca: true
       runLocalScan: true
+
+      resourceGroup: test-scan-and-sca
       
       # Optional: Set severity threshold
       severity: HIGH
