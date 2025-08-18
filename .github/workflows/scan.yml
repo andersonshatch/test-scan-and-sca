@@ -1,0 +1,19 @@
+name: Scan Only
+on: [push, pull_request, repository_dispatch, workflow_dispatch]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Contrast-Security-OSS/contrast-local-scan-action@v1.0.0
+        with:
+          apiUrl: https://eval.contrastsecurity.com
+          apiUserName: ${{ secrets.CONTRAST_USERNAME }}
+          apiKey: ${{ secrets.CONTRAST_API_KEY }}
+          apiServiceKey: ${{ secrets.CONTRAST_SERVICE_KEY }}
+          apiOrgId: ${{ secrets.CONTRAST_ORG_ID }}
+          severity: HIGH
+          fail: true
+          checks: true
+          codeQuality: true
