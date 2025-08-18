@@ -10,7 +10,7 @@ jobs:
       checks: write
     steps:
       - uses: actions/checkout@v3
-      - uses: Contrast-Security-OSS/contrast-local-scan-action@v1.0.0
+      - uses: Contrast-Security-OSS/contrast-local-scan-action@2
         with:
           apiUrl: https://eval.contrastsecurity.com
           apiUserName: ${{ secrets.CONTRAST_USERNAME }}
